@@ -3,7 +3,7 @@ class KnnApplication
 {
     public void Run()
     {
-        int k = AnsiConsole.Ask<int>("Entrer la valeur de [yellow]k[/]:");
+        int k = askKValue();
         IDistance distanceAlgo = AskDistanceAlgorithm();
         ISortAlgo sortAlgo = AskSortingAlgorithm();
         string dataSetTrainPath = AskFilePath("jeu de données d'entraînement");
@@ -51,6 +51,19 @@ class KnnApplication
             "Tri fusion" => new MergeSort(),
             _ => throw new InvalidOperationException("Choix d'algorithme de tri invalide")
         };
+    }
+
+    private int askKValue()
+    {
+        int k;
+        while (true)
+        {
+            k = AnsiConsole.Ask<int>("Entrez la valeur de [yellow]k[/]:");
+            if (k > 0)
+                break;
+            AnsiConsole.MarkupLine("[red]Veuillez entrer une valeur de k valide (positive).[/]");
+        }
+        return k;
     }
 
     private string AskFilePath(string description)
