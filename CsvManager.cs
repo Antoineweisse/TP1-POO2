@@ -2,17 +2,13 @@ using CsvHelper;
 
 public class CsvManager
 {
-    public CsvManager()
-    {
-        // Constructor logic here
-    }
 
     public List<Dictionary<string, object>> ReadCsv(string filePath)
     {
         var config = new CsvHelper.Configuration.CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture)
         {
             HasHeaderRecord = true,
-            Delimiter = ";",
+            DetectDelimiter = true
         };
 
         List<Dictionary<string, object>> results = new List<Dictionary<string, object>>();
@@ -28,8 +24,6 @@ public class CsvManager
             }
         }
         return results;
-        // Console.WriteLine($"Read {records.Count} records from {filePath}");
-
     }
     
 }

@@ -4,11 +4,8 @@ public struct EvaluationResult
     public int[,] ConfusionMatrix { get; set; }
 }
 
-
 public class ClassificationEvaluator
 {
-
-
     public EvaluationResult Evaluate(IKnnClassifier classifier, List<Seed> testData)
     {
         var labels = new Dictionary<string, int>{
@@ -32,8 +29,6 @@ public class ClassificationEvaluator
             if (predicted == seed.Variety)
                 correct++;
         }
-
-
 
         return new EvaluationResult
         {

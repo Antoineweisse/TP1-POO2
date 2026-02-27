@@ -9,8 +9,16 @@ class KnnApplication
         string dataSetTrainPath = AskFilePath("jeu de données d'entraînement");
         string dataSetTestPath = AskFilePath("jeu de données de test");
         string outputPath = AnsiConsole.Ask<string>("Entrer le chemin pour les [yellow]résultats de sortie[/]:");
-    
-        ProcessKnn(k, distanceAlgo, sortAlgo, dataSetTrainPath, dataSetTestPath, outputPath);
+
+        try
+        {
+            ProcessKnn(k, distanceAlgo, sortAlgo, dataSetTrainPath, dataSetTestPath, outputPath);
+            
+        }
+        catch (Exception ex)
+        {
+            AnsiConsole.MarkupLine($"[red]Erreur lors du traitement: {ex.Message}[/]");
+        }
     }
 
     private IDistance AskDistanceAlgorithm()

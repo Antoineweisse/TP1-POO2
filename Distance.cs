@@ -3,7 +3,6 @@ public interface IDistance
     double CalculateDistance(Seed a, Seed b);
 }
 
-
 public class EuclideanDistance : IDistance
 {
     public double CalculateDistance(Seed a, Seed b)
@@ -20,7 +19,6 @@ public class EuclideanDistance : IDistance
         );
     }
 }
-
 
 public class ManhattanDistance : IDistance
 {
