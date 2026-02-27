@@ -8,6 +8,10 @@ public class ClassificationEvaluator
 {
     public EvaluationResult Evaluate(IKnnClassifier classifier, List<Seed> testData)
     {
+        if (testData == null || testData.Count == 0)
+        {
+            throw new ArgumentException("Le jeu de données de test ne peut pas être null ou vide.");
+        }
         var labels = new Dictionary<string, int>{
             { "Kama", 0 },
             { "Rosa", 1 },
